@@ -2,7 +2,11 @@ import * as serviceWorker from "./serviceWorker";
 
 import React from "react";
 import ReactDOM from "react-dom";
+
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
 import App from "./App";
+import SaySomething from "./SaySomething";
 import "./index.css";
 
 // Add these imports - Step 1
@@ -12,7 +16,14 @@ import {store} from "./redux";
 // Wrap existing app in Provider - Step 2
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <Route path="/:filter?">
+        <App />
+      </Route>
+      <Route path="/dude">
+        <SaySomething />
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById("root")
 );

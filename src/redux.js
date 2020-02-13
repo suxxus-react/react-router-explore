@@ -1,22 +1,21 @@
 import {combineReducers, createStore} from "redux";
 
-// actions.js
-export const activateGeod = geod => ({
-  type: "ACTIVATE_GEOD",
-  geod,
+const initState = (title = "", userText = "") => ({
+  title,
+  userText,
 });
 
-export const closeGeod = () => ({
-  type: "CLOSE_GEOD",
+// actions.js
+export const insertText = userText => ({
+  type: "INSERT_TEXT",
+  userText,
 });
 
 // reducers.js
-export const geod = (state = {}, action) => {
+export const geod = (state = {userText: ""}, action) => {
   switch (action.type) {
-    case "ACTIVATE_GEOD":
-      return action.geod;
-    case "CLOSE_GEOD":
-      return {};
+    case "INSERT_TEXT":
+      return action.userText;
     default:
       return state;
   }

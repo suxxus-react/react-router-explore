@@ -2,37 +2,41 @@ import React from "react";
 
 import {connect} from "react-redux";
 
-import {activateGeod, closeGeod} from "./redux";
+import {withRouter} from "react-router-dom";
 
-// App.js
+import {NavLink} from "react-router-dom";
+
 export class App extends React.Component {
+  isDude() {
+    return this.props?.match?.params?.filter === "dude";
+  }
+
+  getTitle() {
+    return this.isDude() ? "Write something Dude!" : "Hey Dude!";
+  }
+
   render() {
     return (
       <div>
-        <h1>{this.props.geod.title || "Hello World!"}</h1>
-
-        {this.props.geod.title ? (
-          <button onClick={this.props.closeGeod}>Exit Geod</button>
-        ) : (
-          <button onClick={() => this.props.activateGeod({title: "Hello dude!"})}>
-            Click Me!
-          </button>
-        )}
+        <h1>{this.getTitle()}</h1>
+        <nav className="footer">
+          <NavLink exact to="/home">
+            to home
+          </NavLink>
+          <NavLink exact to="/dude">
+            to dude
+          </NavLink>
+        </nav>
       </div>
     );
   }
 }
 
-// AppContainer.js
-const mapStateToProps = state => ({
-  geod: state.geod,
-});
-
-const mapDispatchToProps = {
-  activateGeod,
-  closeGeod,
-};
-
-const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
+const AppContainer = withRouter(
+  connect(
+    () => {},
+    () => {}
+  )(App)
+);
 
 export default AppContainer;
