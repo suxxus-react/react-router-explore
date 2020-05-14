@@ -9,6 +9,7 @@ import {insertText} from "./redux";
 const SaySomething = ({handleChange, userText}) => {
   return (
     <div>
+      <h1>Write something Dude!</h1>
       <p>{userText}</p>
       <input type="text" onChange={handleChange} value={userText} />
     </div>
