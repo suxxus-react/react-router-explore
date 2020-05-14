@@ -1,9 +1,11 @@
 import {combineReducers, createStore} from "redux";
 
-const initState = (title = "", userText = "") => ({
-  title,
-  userText,
-});
+/*
+ *const initState = (title = "", userText = "") => ({
+ *  title,
+ *  userText,
+ *});
+ */
 
 // actions.js
 export const insertText = userText => ({
