@@ -3,9 +3,10 @@ import * as serviceWorker from "./serviceWorker";
 import React from "react";
 import ReactDOM from "react-dom";
 
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 import App from "./App";
+import Home from "./Home";
 import SaySomething from "./SaySomething";
 import "./index.css";
 
@@ -19,6 +20,9 @@ ReactDOM.render(
     <Router>
       <Route path="/:filter?">
         <App />
+      </Route>
+      <Route path="/home">
+        <Home />
       </Route>
       <Route path="/dude">
         <SaySomething />
